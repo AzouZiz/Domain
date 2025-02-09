@@ -1,6 +1,6 @@
  numpy
    scikit-learn
-   tensorflow
+   tensorflow-cpu==2.10.0
    transformers
    pandas
    python-whois
