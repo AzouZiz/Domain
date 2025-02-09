@@ -22,19 +22,10 @@ class DomainSuggestion:
     category: Optional[str] = None
     keywords: List[str] = None
 
-class AIEnhancedDomainAnalyzer:
-    """محلل النطاقات المعزز بالذكاء الاصطناعي"""
-    
-    def __init__(self):
-        # تهيئة نماذج الذكاء الاصطناعي
-        self.sentiment_analyzer = pipeline('sentiment-analysis')
-        self.keyword_extractor = pipeline('zero-shot-classification')
-        self.domain_vectorizer = TfidfVectorizer(
-            analyzer='char_wb',
-            ngram_range=(2, 5),
-            min_df=0.0,
-            max_df=1.0
-        )
+# في الكلاس AIEnhancedDomainAnalyzer
+    self.generations = 20  # بدلاً من 50
+    self.population_size = 50  # بدلاً من 100
+
         self.domain_classifier = RandomForestClassifier()
         
         # تحميل نموذج BERT المدرب مسبقاً
