@@ -1,3 +1,6 @@
+# في بداية ملف app.py
+    import nest_asyncio
+    nest_asyncio.apply()
 from flask import Flask, request, jsonify, render_template
 from main import AIEnhancedDomainAnalyzer
 import asyncio
