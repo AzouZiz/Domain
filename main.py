@@ -11,7 +11,7 @@ from dataclasses import dataclass
 import whois
 import asyncio
 import aiohttp
-
+from transformers import BertTokenizer, TFBertModel
 @dataclass
 class DomainSuggestion:
     """فئة لتمثيل اقتراحات النطاقات"""
@@ -29,8 +29,8 @@ class DomainSuggestion:
         self.domain_classifier = RandomForestClassifier()
         
         # تحميل نموذج BERT المدرب مسبقاً
-        self.bert_model = tf.keras.models.load_weights('path_to_bert_model')
-        
+        self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+
         # تهيئة المحلل الجيني
         self.population_size = 100
         self.mutation_rate = 0.1
