@@ -15,12 +15,16 @@ async def analyze_domain():
     try:
         data = request.json
         query = data.get('query', '')
+        if not query:
+            return jsonify({"error": "Query is required"}), 400
+        
         suggestions = await analyzer.smart_domain_search(query)
         return jsonify([{
             "name": s.name,
-            "relevance_score": s.relevance_score,
-            "availability": s.availability
+            "relevance": f"{s.relevance_score:.2f}",
+            "available": s.availability
         } for s in suggestions])
+    
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
